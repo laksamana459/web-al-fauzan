@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Simpan Pinjam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/Users/Sigit Putro Pangestu/Downloads/simpan pinjam.jpeg" alt="Logo Koperasi" width="30" height="30" class="d-inline-block align-text-top">
+                Koperasi Simpan Pinjam
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#anggota">Data Anggota</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#transaksi">Transaksi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#laporan">Laporan</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <img src="savings.jpg" alt="Total Simpanan" class="img-fluid mb-3">
+                            <h4>Total Simpanan</h4>
+                            <h5>Rp 10,000,000</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <img src="loan.jpg" alt="Total Pinjaman" class="img-fluid mb-3">
+                            <h4>Total Pinjaman</h4>
+                            <h5>Rp 7,500,000</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <img src="members.jpg" alt="Jumlah Anggota" class="img-fluid mb-3">
+                            <h4>Jumlah Anggota</h4>
+                            <h5>50</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="anggota" class="mt-5">
+            <h2>Data Anggota</h2>
+            <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addMemberModal">Tambah Anggota</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>No. Telepon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="memberTable">
+                    <!-- Dynamic content here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="transaksi" class="mt-5">
+            <h2>Transaksi</h2>
+            <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addTransactionModal">Tambah Transaksi</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID Transaksi</th>
+                        <th>Jenis</th>
+                        <th>Nama Anggota</th>
+                        <th>Jumlah</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTable">
+                    <!-- Dynamic content here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="laporan" class="mt-5">
+            <h2>Laporan</h2>
+            <img src="report.jpg" alt="Laporan" class="img-fluid mb-3">
+            <button class="btn btn-info">Unduh Laporan</button>
+            <p class="mt-2">Laporan keuangan lengkap tersedia di sini.</p>
+        </section>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMemberModalLabel">Tambah Anggota</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMemberForm">
+                        <div class="mb-3">
+                            <label for="memberName" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="memberName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="memberPhone" class="form-label">No. Telepon</label>
+                            <input type="text" class="form-control" id="memberPhone" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal fade" id="addTransactionModal" tabindex="-1" aria-labelledby="addTransactionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTransactionModalLabel">Tambah Transaksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addTransactionForm">
+                        <div class="mb-3">
+                            <label for="transactionType" class="form-label">Jenis</label>
+                            <select class="form-select" id="transactionType" required>
+                                <option value="">Pilih Jenis</option>
+                                <option value="Simpan">Simpan</option>
+                                <option value="Pinjam">Pinjam</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionMember" class="form-label">Nama Anggota</label>
+                            <input type="text" class="form-control" id="transactionMember" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionAmount" class="form-label">Jumlah</label>
+                            <input type="number" class="form-control" id="transactionAmount" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="transactionDate" class="form-label">Tanggal</label>
+                            <input type="date" class="form-control" id="transactionDate" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Add Member Form Submission
+            $("#addMemberForm").submit(function(e) {
+                e.preventDefault();
+                const name = $("#memberName").val();
+                const phone = $("#memberPhone").val();
+
+                $("#memberTable").append(
+                    `<tr>
+                        <td>#</td>
+                        <td>${name}</td>
+                        <td>${phone}</td>
+                        <td><button class="btn btn-danger btn-sm">Hapus</button></td>
+                    </tr>`
+                );
+
+                $("#addMemberModal").modal('hide');
+                $("#addMemberForm")[0].reset();
+            });
+
+            // Add Transaction Form Submission
+            $("#addTransactionForm").submit(function(e) {
+                e.preventDefault();
+                const type = $("#transactionType").val();
+                const member = $("#transactionMember").val();
+                const amount = $("#transactionAmount").val();
+                const date = $("#transactionDate").val();
+
+                $("#transactionTable").append(
+                    `<tr>
+                        <td>#</td>
+                        <td>${type}</td>
+                        <td>${member}</td>
+                        <td>${amount}</td>
+                        <td>${date}</td>
+                    </tr>`
+                );
+
+                $("#addTransactionModal").modal('hide');
+                $("#addTransactionForm")[0].reset();
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
